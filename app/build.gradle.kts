@@ -1,28 +1,28 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
-    namespace = "jakha.soft.uz.f1"
-    compileSdk = 34
+    namespace = Configs.packageName
+    compileSdk = Configs.compileSDK
 
     defaultConfig {
-        applicationId = "jakha.soft.uz.f1"
-        minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = Configs.packageName
+        minSdk = Configs.minSDK
+        targetSdk = Configs.targetSDK
+        versionCode = Configs.versionCode
+        versionName = Configs.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
-            useSupportLibrary = true
+            useSupportLibrary = Configs.useSupportLibrary
         }
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = Configs.isMinifyEnabled
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
@@ -31,13 +31,13 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Configs.jvmTarget
     }
     buildFeatures {
-        compose = true
+        compose = Configs.compose
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = Configs.kotlinCompilerExtensionVersion
     }
     packaging {
         resources {
